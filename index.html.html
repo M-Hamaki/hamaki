@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموقع الشخصي | محمد حماقي</title>
+    <!-- استدعاء خطوط جوجل لتنسيق احترافي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- ربط ملف الـ CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الشريط العلوي (Navbar) -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">حماقي<span>.تيك</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">نبذة عني</a></li>
+                <li><a href="#projects">مشاريعي</a></li>
+                <li><a href="#contact">تواصل معي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>مرحباً بك في عالمي الرقمي</h1>
+            <p>أهلاً بك! أنا متخصص في تطوير الويب وبناء الأنظمة البرمجية الذكية والأتمتة.</p>
+            <a href="#projects" class="btn">استكشف أعمالي</a>
+        </div>
+    </section>
+
+    <!-- قسم نبذة عني (About Section) -->
+    <section id="about" class="about">
+        <h2>نبذة عني</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>مرحباً! أنا مطور ويب وشغوف بكل ما يخص تكنولوجيا المعلومات، إدارة الخوادم، وبناء الحلول البرمجية المتكاملة التي تسهل سير العمل اليومي.</p>
+                <div class="skills">
+                    <span class="skill-badge">Full-Stack Web Dev</span>
+                    <span class="skill-badge">Python & Scripting</span>
+                    <span class="skill-badge">Systems Administration</span>
+                    <span class="skill-badge">Automation & DevOps</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المشاريع (Projects Section) -->
+    <section id="projects" class="projects">
+        <h2>أحدث المشاريع والأعمال</h2>
+        <div class="projects-grid">
+            <!-- مشروع 1 -->
+            <div class="project-card">
+                <h3>نظام إدارة ذكي</h3>
+                <p>تطبيق ويب متكامل لإدارة البيانات وجدولة المهام والعمليات بشكل مؤتمت بالكامل لرفع كفاءة العمل.</p>
+                <span class="tech-tag">Python / JS</span>
+            </div>
+            <!-- مشروع 2 -->
+            <div class="project-card">
+                <h3>منصة أتمتة البيانات</h3>
+                <p>بناء سير عمل ذكي لربط المنصات المختلفة ونقل البيانات بسلاسة وتلقائية بدون تدخل بشري.</p>
+                <span class="tech-tag">n8n / Docker</span>
+            </div>
+            <!-- مشروع 3 -->
+            <div class="project-card">
+                <h3>بنية تحتية سحابية</h3>
+                <p>إعداد وتأمين خوادم افتراضية متكاملة مع أنظمة نسخ احتياطي دورية ومؤمنة بالكامل.</p>
+                <span class="tech-tag">Linux / Cloud</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل (Contact Section) -->
+    <section id="contact" class="contact">
+        <h2>تواصل معي</h2>
+        <p>هل لديك فكرة مشروع ترغب في تنفيذها؟ لا تتردد في مراسلتي!</p>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('تم إرسال رسالتك بنجاح! (هذا العرض تجريبي)');">
+            <input type="text" placeholder="الاسم الكريم" required>
+            <input type="email" placeholder="البريد الإلكتروني" required>
+            <textarea placeholder="تفاصيل رسالتك أو مشروعك..." rows="5" required></textarea>
+            <button type="submit" class="btn">إرسال الرسالة</button>
+        </form>
+    </section>
+
+    <!-- التذييل (Footer) -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 | تم التطوير بكل حب</p>
+    </footer>
+
+</body>
+</html>
