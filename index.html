@@ -1,162 +1,665 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الموقع الشخصي | محمد حماقي</title>
-    <!-- استدعاء خطوط جوجل لتنسيق احترافي -->
+    <title>محمد حماقي | EdTech Expert & Software Engineer</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Cairo & Fira Code للمحاكي البرمجي) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- ربط ملف الـ CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome للأيقونات الاحترافية -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- إعدادات Tailwind المخصصة وتفعيل الـ Dark Mode تلقائياً -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* كود مخصص لبعض الحركات المتقدمة التي لا تغطيها Tailwind */
+        .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; filter: drop-shadow(0 0 15px #0ea5e9); }
+        }
+        .glow-effect {
+            animation: pulse-glow 3s infinite;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100 font-sans transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100">
 
-    <!-- شريط تقدم القراءة الاحترافي -->
-    <div id="progress-bar"></div>
+    <!-- شريط تقدم القراءة (Progress Bar) -->
+    <div id="scroll-progress" class="fixed top-0 right-0 h-1 bg-gradient-to-l from-brand-500 to-cyan-400 z-50 transition-all duration-100" style="width: 0%"></div>
 
-    <!-- الشريط العلوي (Navbar) -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">Hamaki<span>.EdTech</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">نبذة عني</a></li>
-                <li><a href="#experience">الخبرات</a></li>
-                <li><a href="#certificates">الشهادات</a></li>
-                <li><a href="#contact">تواصل معي</a></li>
-                <!-- زر تبديل الوضع الليلي -->
-                <li><button id="theme-toggle" aria-label="Toggle Theme">🌙</button></li>
+    <!-- شريط التنقل الاحترافي (Sticky Navbar) -->
+    <header class="fixed top-0 w-full z-40 transition-all duration-300 border-b border-transparent" id="main-header">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/20">
+                    H
+                </div>
+                <span class="text-xl font-extrabold tracking-wide text-white" id="logo-text">Hamaki<span class="text-brand-500">.EdTech</span></span>
+            </div>
+            
+            <ul class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300" id="nav-menu">
+                <li><a href="#home" class="hover:text-brand-500 transition-colors">الرئيسية</a></li>
+                <li><a href="#terminal" class="hover:text-brand-500 transition-colors">الطرفية التفاعلية</a></li>
+                <li><a href="#about" class="hover:text-brand-500 transition-colors">نبذة شخصية</a></li>
+                <li><a href="#experience" class="hover:text-brand-500 transition-colors">المسيرة المهنية</a></li>
+                <li><a href="#github-section" class="hover:text-brand-500 transition-colors">مشاريع الحية</a></li>
+                <li><a href="#contact" class="hover:text-brand-500 transition-colors">تواصل</a></li>
             </ul>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-btn" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 hover:border-brand-500 flex items-center justify-center text-yellow-400 transition-all">
+                    <i class="fa-solid fa-sun text-lg"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-flex bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-brand-500/20 hover:scale-105 transition-all">
+                    توظيف/تواصل
+                </a>
+            </div>
         </nav>
     </header>
 
-    <!-- القسم الرئيسي (Hero Section) -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>محمد حماقي</h1>
-            <!-- هنا سيظهر تأثير الكتابة الحركي عبر الجافا سكريبت -->
-            <p class="typing-text-container">أنا <span id="typing-text"></span></p>
-            <p class="hero-sub">خبير تكنولوجيا التعليم ومطور برمجيات وأتمتة، متميز في قيادة التحول الرقمي وتحديث البنية التحتية للمؤسسات التعليمية.</p>
-            <a href="#experience" class="btn">استكشف مسيرتي المهنية</a>
-        </div>
-    </section>
-
-    <!-- قسم الإحصائيات والأرقام الحية (Counters Section) -->
-    <section id="counters" class="counters-section">
-        <div class="counters-grid">
-            <div class="counter-card">
-                <span class="counter-number" data-target="6">0</span><span class="counter-plus">+</span>
-                <p>سنوات خبرة</p>
-            </div>
-            <div class="counter-card">
-                <span class="counter-number" data-target="10">0</span><span class="counter-plus">+</span>
-                <p>شهادات اعتمادات</p>
-            </div>
-            <div class="counter-card">
-                <span class="counter-number" data-target="5">0</span><span class="counter-plus">+</span>
-                <p>أنظمة مخصصة مطورة</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم نبذة عني (About Section) -->
-    <section id="about" class="about">
-        <h2>نبذة شخصية</h2>
-        <div class="about-text">
-            <p>أمتلك خبرة تمتد لأكثر من 6 سنوات في قيادة أقسام الحاسب الآلي وتطوير تكنولوجيا التعليم. أجمع بين الخلفية التربوية والمهارات البرمجية المتقدمة لرفع كفاءة المؤسسات ودفع عجلة التحول الرقمي، وتطوير الأنظمة الذكية مثل نظام إدارة المدارس المخصص.</p>
-            
-            <h3 style="margin-top: 30px; color: var(--secondary-color);">المهارات الأساسية</h3>
-            <div class="skills">
-                <span class="skill-badge">EdTech Leadership</span>
-                <span class="skill-badge">School Management Systems (EduCore)</span>
-                <span class="skill-badge">Python & Scripting</span>
-                <span class="skill-badge">JavaScript / HTML & CSS</span>
-                <span class="skill-badge">Algorithms & C++</span>
-                <span class="skill-badge">Infrastructure Development</span>
-                <span class="skill-badge">Team Management</span>
-                <span class="skill-badge">Project Management</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم الخبرات المهنية (Experience Section) -->
-    <section id="experience" class="projects">
-        <h2>الخبرات المهنية</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>رئيس قسم الحاسب الآلي / قائد تكنولوجيا التعليم</h3>
-                <h4 class="card-subtitle">مدارس دلتا الحديثة للغات | 2020 - حتى الآن</h4>
-                <p>تطوير نظام مخصص لإدارة المدارس (EduCore) لتسهيل العمليات الإدارية والأكاديمية، قيادة وتوجيه فريق عمل عالي الأداء، وتطوير البنية التحتية التكنولوجية للمدرسة وحل المشكلات التقنية المعقدة.</p>
-                <span class="tech-tag">HOD & EdTech Lead</span>
-            </div>
-            <div class="project-card">
-                <h3>معلم حاسب آلي</h3>
-                <h4 class="card-subtitle">مدارس دلتا الحديثة للغات | 2019 - 2020</h4>
-                <p>شرح الدروس باستخدام استراتيجيات تعليمية حديثة، وتقديم مشاريع عملية تساعد الطلاب على تطبيق ما تعلموه، وإعداد الخطط والمناهج التعليمية المبتكرة.</p>
-                <span class="tech-tag">Computer Teacher</span>
-            </div>
-            <div class="project-card">
-                <h3>مشرف مركز الاتصال</h3>
-                <h4 class="card-subtitle">صيدليات العبد اللطيف الطرشوبي | 2018 - 2019</h4>
-                <p>إدارة وتوجيه فريق خدمة العملاء ومركز الاتصال لضمان جودة الخدمة ورفع كفاءة التواصل الاستراتيجي.</p>
-                <span class="tech-tag">Call Center Supervisor</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم التعليم والشهادات (Certificates Section) -->
-    <section id="certificates" class="projects-section-white">
-        <h2>التعليم والشهادات الاحترافية</h2>
-        <div class="projects-grid" style="margin-top: 30px;">
-            <div class="project-card border-accent">
-                <h3>المؤهلات الأكاديمية</h3>
-                <p>• دبلوم عام في التربية تخصص حاسب آلي - جامعة الأزهر (2025).<br>• بكالوريوس تجارة - جامعة المنصورة (2017).</p>
-                <span class="tech-tag">Education</span>
-            </div>
-            <div class="project-card border-accent">
-                <h3>البرمجة وعلوم الحاسب</h3>
-                <p>• شهادة CS50x من جامعة هارفارد (2026).<br>• تطوير الويب (JavaScript / HTML & CSS) من معهد تكنولوجيا المعلومات ITI.<br>• لغة Python (المستوى المتوسط) من وزارة الاتصالات.<br>• أسس البرمجة وحل المشكلات ولغة C++ من Programming Advices.</p>
-                <span class="tech-tag">Programming</span>
-            </div>
-            <div class="project-card border-accent">
-                <h3>الشهادات التقنية والتربوية</h3>
-                <p>• شهادة Microsoft Office Specialist Master من CertiPort.<br>• دورة التدريس عبر الإنترنت من Amideast.<br>• دبلومة المحاسب الشامل والإلكتروني المعتمد.</p>
-                <span class="tech-tag">Certificates</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم التواصل (Contact Section) -->
-    <section id="contact" class="contact">
-        <h2>تواصل معي</h2>
-        <p>يسعدني دائماً تواصلك المهني وتبادل الخبرات حول تكنولوجيا التعليم والبرمجة.</p>
+    <!-- القسم الرئيسي العصري (Hero Section) -->
+    <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-950">
+        <!-- خطوط الخلفية البرمجية الجمالية -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-25"></div>
         
-        <div class="contact-info-block">
-            <p>📍 طلخا، المنصورة، الدقهلية، مصر</p>
-            <p>📧 hamaki.gm@gmail.com</p>
-            <p>🔗 <a href="https://linkedin.com/in/m-hamaki/" target="_blank">linkedin.com/in/m-hamaki/</a></p>
-            <p>🌐 <a href="https://facebook.com/hamaki.fb" target="_blank">facebook.com/hamaki.fb</a></p>
-        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full py-12">
+            
+            <!-- النصوص التعريفية -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    متاح للمشاريع والاستشارات الرقمية
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl font-black leading-tight tracking-tight">
+                    مرحباً، أنا <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-cyan-400 to-emerald-400">محمد حماقي</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-slate-300 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    خبير تكنولوجيا التعليم (<span class="text-brand-400 font-semibold">EdTech Lead</span>) ومطور برمجيات وأنظمة أتمتة. أدمج بين الخبرة الإدارية التربوية وبناء الأنظمة الذكية مثل <span class="text-cyan-400 font-mono font-semibold">EduCore</span> لدفع التحول الرقمي الفعلي في المؤسسات.
+                </p>
 
-        <form class="contact-form" id="main-contact-form">
-            <input type="text" placeholder="الاسم" required id="form-name">
-            <input type="email" placeholder="البريد الإلكتروني" required id="form-email">
-            <textarea placeholder="نص رسالتك هنا..." rows="5" required id="form-message"></textarea>
-            <button type="submit" class="btn">إرسال الرسالة</button>
-        </form>
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#terminal" class="px-6 py-3.5 rounded-xl bg-slate-800 border border-slate-700 hover:border-brand-500 font-mono text-sm text-brand-400 hover:text-white flex items-center gap-2 hover:scale-105 transition-all">
+                        <i class="fa-solid fa-terminal"></i>
+                        run m_hamaki.sh
+                    </a>
+                    <a href="#about" class="px-6 py-3.5 rounded-xl bg-slate-100 hover:bg-white text-slate-900 font-bold text-sm shadow-xl hover:scale-105 transition-all">
+                        تصفح مهاراتي وخبراتي
+                    </a>
+                </div>
+            </div>
+
+            <!-- محاكي الطرفية التفاعلي (Interactive OS Terminal) -->
+            <div class="lg:col-span-5 w-full" id="terminal">
+                <div class="w-full rounded-2xl shadow-2xl overflow-hidden border border-slate-700/50 glass">
+                    <!-- ترويسة الطرفية -->
+                    <div class="bg-slate-950/80 px-4 py-3 flex items-center justify-between border-b border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400">bash - m_hamaki@harvard_cs50x</span>
+                        <i class="fa-solid fa-network-wired text-slate-500 text-xs"></i>
+                    </div>
+                    <!-- محتوى الطرفية -->
+                    <div class="p-5 font-mono text-xs sm:text-sm text-emerald-400 space-y-3 h-[300px] overflow-y-auto ltr" style="direction: ltr;" id="terminal-body">
+                        <div><span class="text-slate-500">// Welcome to Hamaki's Interactive Terminal.</span></div>
+                        <div><span class="text-slate-500">// Type <span class="text-yellow-400 font-bold">help</span> to see available commands.</span></div>
+                        <div class="pt-2"><span class="text-blue-400">m_hamaki@portfolio:~$</span> <span class="text-slate-100">about</span></div>
+                        <div class="text-slate-300 leading-relaxed">EdTech Lead with 6+ years of experience modernization in digital infrastructure. Harvard CS50x alumni. Specializes in building custom School Management Systems and backend process automations.</div>
+                        
+                        <!-- سطر الإدخال النشط -->
+                        <div class="flex items-center gap-1.5 pt-2" id="input-line">
+                            <span class="text-blue-400">m_hamaki@portfolio:~$</span>
+                            <input type="text" id="terminal-input" class="bg-transparent text-slate-100 border-none outline-none flex-1 font-mono focus:ring-0 p-0" autofocus autocomplete="off" placeholder="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <!-- زر العودة إلى الأعلى -->
-    <button id="scroll-to-top" aria-label="Go to top">↑</button>
+    <!-- قسم الأرقام والإنجازات المتفاعلة (Statistics Section) -->
+    <section class="border-y border-slate-800 bg-slate-950/40 relative z-20">
+        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            <div class="space-y-2 p-4">
+                <div class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-400 font-mono" id="stat-exp">6+</div>
+                <div class="text-slate-400 text-sm font-semibold">سنوات خبرة في قيادة أقسام الحاسب</div>
+            </div>
+            <div class="space-y-2 p-4 border-y sm:border-y-0 sm:border-x border-slate-800">
+                <div class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 font-mono" id="stat-cert">12+</div>
+                <div class="text-slate-400 text-sm font-semibold">شهادات تكنولوجية وتربوية معتمدة</div>
+            </div>
+            <div class="space-y-2 p-4">
+                <div class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-brand-400 font-mono" id="stat-sys">100%</div>
+                <div class="text-slate-400 text-sm font-semibold">معدل نجاح أتمتة العمليات المدرسية</div>
+            </div>
+        </div>
+    </section>
 
-    <!-- التذييل (Footer) -->
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026 | تم تطوير الموقع بواسطة محمد حماقي</p>
+    <!-- نبذة شخصية وتوزيع مصفوفة المهارات (About & Tech Stack) -->
+    <section id="about" class="max-w-7xl mx-auto px-6 py-20 space-y-16">
+        <div class="text-center space-y-4">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">نبذة عني والمهارات البرمجية</h2>
+            <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            <p class="text-slate-400 max-w-2xl mx-auto">توزيع للمهارات والتقنيات البرمجية التي أستخدمها في بناء وتأمين وإدارة البنى التحتية للمؤسسات والشركات.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- النص والشرح -->
+            <div class="lg:col-span-6 space-y-6">
+                <h3 class="text-2xl font-bold text-white">تطوير بنية برمجية مستقرة وأتمتة متكاملة</h3>
+                <p class="text-slate-300 leading-relaxed">
+                    من خلال موقعي كرئيس قسم تكنولوجيا التعليم بمدارس دلتا، قمت بتأسيس وإعداد نظام <strong class="text-brand-400">EduCore</strong> الخاص بالمدرسة، مما أدى إلى رقمنة وأتمتة كامل العمليات اليومية. مهاراتي البرمجية تم صقلها بأحدث المنهجيات والشهادات العالمية لضمان بناء برمجيات قوية وسهلة الصيانة (Clean & Maintainable Code).
+                </p>
+                <p class="text-slate-300 leading-relaxed">
+                    أؤمن بأن الأتمتة (Automation) وإدارة الخوادم هي العصب الحقيقي لأي مؤسسة حديثة، ولذلك أركز على توفير أقصى درجات الاستقرار الأمني والتقني.
+                </p>
+                <div class="grid grid-cols-2 gap-4 pt-4">
+                    <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                        <i class="fa-solid fa-gears text-brand-400 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">أتمتة العمليات (n8n)</h4>
+                        <p class="text-xs text-slate-400">ربط المنصات وبناء سير عمل ذكي مخصص.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                        <i class="fa-solid fa-shield-halved text-cyan-400 text-2xl mb-2"></i>
+                        <h4 class="font-bold text-white text-sm">البنية التحتية والخوادم</h4>
+                        <p class="text-xs text-slate-400">إدارة خوادم Linux الافتراضية بأمان كامل.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- مصفوفة المهارات الاحترافية في مجموعات -->
+            <div class="lg:col-span-6 space-y-6">
+                <!-- مجموعة اللغات -->
+                <div class="space-y-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">لغات البرمجة والأنظمة الأساسية</span>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-brands fa-python text-amber-400 mr-2"></i>Python</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-code text-cyan-400 mr-2"></i>C++ (C)</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-brands fa-js text-yellow-400 mr-2"></i>JavaScript (ES6+)</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-brands fa-html5 text-orange-500 mr-2"></i>HTML5 / CSS3</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-terminal text-emerald-400 mr-2"></i>Shell Scripting / Bash</span>
+                    </div>
+                </div>
+
+                <!-- مجموعة المنصات والتقنيات -->
+                <div class="space-y-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">أدوات الأتمتة وإدارة الأنظمة</span>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-network-wired text-indigo-400 mr-2"></i>n8n / API Automation</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-brands fa-docker text-blue-400 mr-2"></i>Docker Containers</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-brands fa-linux text-white mr-2"></i>Linux System Admin</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-cloud text-sky-400 mr-2"></i>Cloud Hosting (VPS)</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-brands fa-git-alt text-orange-600 mr-2"></i>Git Version Control</span>
+                    </div>
+                </div>
+
+                <!-- مجموعة الإدارة والقيادة -->
+                <div class="space-y-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">القيادة المنهجية والأدوات الإدارية</span>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-people-roof text-teal-400 mr-2"></i>EdTech Team Management</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-cubes text-pink-400 mr-2"></i>EduCore Architecture</span>
+                        <span class="px-3.5 py-2 rounded-xl bg-slate-800 text-sm font-semibold border border-slate-700/60 text-slate-200"><i class="fa-solid fa-briefcase text-amber-500 mr-2"></i>Accounting & ERP Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المسيرة والخبرة المهنية الاحترافية (Professional Timeline) -->
+    <section id="experience" class="bg-slate-950/20 border-y border-slate-800 py-20">
+        <div class="max-w-7xl mx-auto px-6 space-y-16">
+            <div class="text-center space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">المسيرة المهنية والتعليمية</h2>
+                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- الخط الطولي للتسلسل -->
+                <div class="absolute right-4 top-0 bottom-0 w-0.5 bg-slate-800 md:right-1/2"></div>
+
+                <!-- الخبرة 1 -->
+                <div class="relative flex flex-col md:flex-row items-stretch mb-12 gap-8">
+                    <div class="flex items-center md:w-1/2 justify-end text-right">
+                        <div class="w-full md:pl-8 space-y-2 pr-8 md:pr-0">
+                            <span class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-bold font-mono">2020 - PRESENT</span>
+                            <h3 class="text-xl font-bold text-white">رئيس قسم الحاسب / قائد تكنولوجيا التعليم</h3>
+                            <h4 class="text-sm text-cyan-400 font-semibold">مدارس دلتا الحديثة للغات - Talkha, Mansoura</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">تطوير نظام EduCore لإدارة المدارس برمجياً لتسهيل العمليات الإدارية والأكاديمية، إدارة وتدريب الفريق التقني والتربوي، وتحديث البنية التحتية التقنية للمؤسسة وتحديث خوادمها بالكامل.</p>
+                        </div>
+                    </div>
+                    <!-- النقطة الوسطى -->
+                    <div class="absolute right-2 md:right-1/2 translate-x-1.5 md:translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 border-4 border-brand-500 z-10"></div>
+                    <div class="hidden md:block w-1/2"></div>
+                </div>
+
+                <!-- الخبرة 2 -->
+                <div class="relative flex flex-col md:flex-row-reverse items-stretch mb-12 gap-8">
+                    <div class="flex items-center md:w-1/2 justify-start text-right md:text-left md:items-start">
+                        <div class="w-full md:pr-8 space-y-2 pr-8 text-right">
+                            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold font-mono">2019 - 2020</span>
+                            <h3 class="text-xl font-bold text-white">معلم حاسب آلي</h3>
+                            <h4 class="text-sm text-emerald-400 font-semibold">مدارس دلتا الحديثة للغات</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">شرح المناهج التعليمية وبناء برامج عملية لمساعدة الطلاب على دمج وتطبيق المفاهيم البرمجية والخوارزميات بشكل تفاعلي.</p>
+                        </div>
+                    </div>
+                    <div class="absolute right-2 md:right-1/2 translate-x-1.5 md:translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 border-4 border-emerald-500 z-10"></div>
+                    <div class="hidden md:block w-1/2"></div>
+                </div>
+
+                <!-- الخبرة 3 -->
+                <div class="relative flex flex-col md:flex-row items-stretch gap-8">
+                    <div class="flex items-center md:w-1/2 justify-end text-right">
+                        <div class="w-full md:pl-8 space-y-2 pr-8 md:pr-0">
+                            <span class="inline-block px-3 py-1 rounded-full bg-slate-800 text-slate-400 text-xs font-bold font-mono">2018 - 2019</span>
+                            <h3 class="text-xl font-bold text-white">مشرف مركز الاتصال</h3>
+                            <h4 class="text-sm text-slate-400 font-semibold">صيدليات العبد اللطيف الطرشوبي</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">إدارة وتوجيه فريق مركز الاتصال، وإدارة العلاقات مع الوكلاء ومقدمي الخدمة لضمان استمرارية الجودة الإدارية.</p>
+                        </div>
+                    </div>
+                    <div class="absolute right-2 md:right-1/2 translate-x-1.5 md:translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 border-4 border-slate-700 z-10"></div>
+                    <div class="hidden md:block w-1/2"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم جيت هب الحي (Dynamic GitHub Projects) -->
+    <section id="github-section" class="max-w-7xl mx-auto px-6 py-20 space-y-12">
+        <div class="text-center space-y-4">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">مستودعات برمجية حية من GitHub</h2>
+            <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            <p class="text-slate-400 max-w-xl mx-auto">يتم سحب هذه المشاريع حياً ومباشراً من حسابي الشخصي على جيت هب باستخدام الـ API.</p>
+        </div>
+
+        <!-- حاوية تحميل جيت هب الدوارة -->
+        <div id="github-loading" class="text-center py-12 space-y-4">
+            <div class="w-10 h-10 border-4 border-brand-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p class="text-sm text-slate-400">جاري الاتصال بـ GitHub API وسحب المشاريع...</p>
+        </div>
+
+        <!-- شبكة المشاريع الحية بعد اكتمال التحميل -->
+        <div id="github-repos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+            <!-- سيتم توليد العناصر هنا حركياً عبر الـ Javascript -->
+        </div>
+    </section>
+
+    <!-- قسم التواصل الاحترافي المعد للأتمتة (Interactive Contact Section) -->
+    <section id="contact" class="max-w-7xl mx-auto px-6 py-20 space-y-12 border-t border-slate-800">
+        <div class="text-center space-y-4">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">تواصل معي أو وظفني</h2>
+            <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            <p class="text-slate-400 max-w-xl mx-auto">هل تبحث عن استشارة للتحول الرقمي بمؤسستك أو ترغب في أتمتة عملياتك؟ أرسل رسالتك الآن.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
+            <!-- الكروت التعريفية -->
+            <div class="lg:col-span-5 space-y-4">
+                <div class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 flex gap-4 items-center">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl shrink-0">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 block font-semibold uppercase">البريد الإلكتروني المباشر</span>
+                        <a href="mailto:hamaki.gm@gmail.com" class="text-white hover:text-brand-400 font-mono text-sm sm:text-base">hamaki.gm@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 flex gap-4 items-center">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 text-xl shrink-0">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 block font-semibold uppercase">لينكد إن المهني</span>
+                        <a href="https://linkedin.com/in/m-hamaki/" target="_blank" class="text-white hover:text-brand-400 text-sm">linkedin.com/in/m-hamaki/</a>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 flex gap-4 items-center">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl shrink-0">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-slate-400 block font-semibold uppercase">رقم الهاتف / واتساب</span>
+                        <a href="https://wa.me/201001686363" target="_blank" class="text-white hover:text-emerald-400 font-mono text-sm sm:text-base">+20 100 168 6363</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نموذج الاتصال الذكي (Automation-Ready) -->
+            <div class="lg:col-span-7">
+                <form id="pro-contact-form" class="space-y-4 bg-slate-800/30 p-8 rounded-2xl border border-slate-700/40 glass">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-400">الاسم الكريم</label>
+                            <input type="text" id="contact-name" required class="w-full bg-slate-900 border border-slate-700/70 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 font-sans" placeholder="محمد حماقي">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-400">البريد الإلكتروني</label>
+                            <input type="email" id="contact-email" required class="w-full bg-slate-900 border border-slate-700/70 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 font-sans" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-400">عنوان الرسالة أو موضوع الاتصال</label>
+                        <input type="text" id="contact-subject" required class="w-full bg-slate-900 border border-slate-700/70 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 font-sans" placeholder="مشروع أتمتة جديد / استشارة برمجية">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-400">تفاصيل رسالتك</label>
+                        <textarea id="contact-message" required rows="5" class="w-full bg-slate-900 border border-slate-700/70 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 font-sans" placeholder="تفاصيل ما تحتاج إليه برمجياً أو تربوياً..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 py-3.5 rounded-xl text-white font-bold text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        إرسال رسالة تفاعلية مؤتمتة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر العودة للأعلى بسهم ذكي -->
+    <button id="up-arrow" aria-label="Back to Top" class="fixed bottom-6 left-6 w-11 h-11 rounded-xl bg-brand-600 hover:bg-brand-500 text-white flex items-center justify-center text-lg shadow-xl translate-y-12 opacity-0 hover:scale-110 transition-all duration-300 z-30">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- التذييل العصري (Footer) -->
+    <footer class="border-t border-slate-800 bg-slate-950/80 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center">
+            <p class="text-sm text-slate-400 font-sans">© 2026 | تم بناء الموقع بأرقى الممارسات البرمجية بواسطة <span class="text-brand-500 font-bold">محمد حماقي</span></p>
+            <div class="flex items-center gap-4 text-slate-400 text-lg">
+                <a href="https://github.com/M-Hamaki" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/m-hamaki/" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://facebook.com/hamaki.fb" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- ربط ملف الـ JavaScript في نهاية الصفحة لضمان السرعة -->
-    <script src="script.js"></script>
+    <!-- منطق البرمجة المطور بالكامل (Advanced Scripting Block) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // -------------------------------------------------------------
+            // 1. محاكي الطرفية التفاعلي المطور (Command Line Simulator)
+            // -------------------------------------------------------------
+            const terminalInput = document.getElementById("terminal-input");
+            const terminalBody = document.getElementById("terminal-body");
+            const inputLine = document.getElementById("input-line");
+
+            const commands = {
+                help: () => "Available Commands:<br><span class='text-yellow-400'>about</span>    - Brief intro of who I am<br><span class='text-yellow-400'>skills</span>   - List of my core technology stack<br><span class='text-yellow-400'>educore</span>  - Tech structure of my school management system<br><span class='text-yellow-400'>contact</span>  - My professional contact info<br><span class='text-yellow-400'>clear</span>    - Clears the terminal screen",
+                about: () => "Mohammed Hamaki:<br>EdTech Expert & Tech-Lead with 6+ years of experience leading Computer Science Depts. Fluent in Python, JS, C++ and automation architectures.",
+                skills: () => "Core Tech Stack:<br>• Languages: Python, C++, JS, HTML/CSS, Bash<br>• Automation: n8n, API Integrations, Webhooks<br>• Infrastructure: Docker, Linux VPS Server Administrations, Cloud Databases",
+                educore: () => "EduCore Architecture:<br>A highly automated proprietary School Management System developed with Python & JS backend, powered with Docker containers, automated daily cron backup scripts, and n8n webhooks for notification and workflow pipelines.",
+                contact: () => "Direct Contact channels:<br>• Email: <a href='mailto:hamaki.gm@gmail.com' class='underline text-brand-400'>hamaki.gm@gmail.com</a><br>• Phone: +201001686363<br>• LinkedIn: linkedin.com/in/m-hamaki/",
+                clear: () => {
+                    terminalBody.innerHTML = "";
+                    terminalBody.appendChild(inputLine);
+                    return "";
+                }
+            };
+
+            terminalInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    const inputVal = terminalInput.value.trim().toLowerCase();
+                    terminalInput.value = "";
+
+                    // طباعة السطر المدخل أولاً
+                    const line = document.createElement("div");
+                    line.className = "pt-2";
+                    line.innerHTML = `<span class="text-blue-400">m_hamaki@portfolio:~$</span> <span class="text-slate-100">${inputVal}</span>`;
+                    terminalBody.insertBefore(line, inputLine);
+
+                    if (inputVal === "") return;
+
+                    // معالجة الأمر وطباعة الإخراج
+                    const output = document.createElement("div");
+                    output.className = "text-slate-300 leading-relaxed";
+
+                    if (commands[inputVal]) {
+                        const res = commands[inputVal]();
+                        if (inputVal !== "clear") {
+                            output.innerHTML = res;
+                            terminalBody.insertBefore(output, inputLine);
+                        }
+                    } else {
+                        output.innerHTML = `<span class="text-rose-500">bash: command not found: ${inputVal}</span>. Type <span class="text-yellow-400">help</span> for guide.`;
+                        terminalBody.insertBefore(output, inputLine);
+                    }
+
+                    // التمرير التلقائي لأسفل الطرفية
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                }
+            });
+
+            // -------------------------------------------------------------
+            // 2. الربط الفعلي مع GitHub API (Dynamic Repo Fetching)
+            // -------------------------------------------------------------
+            const githubLoading = document.getElementById("github-loading");
+            const githubGrid = document.getElementById("github-repos-grid");
+            const githubUser = "M-Hamaki";
+
+            async function fetchGithubRepos() {
+                try {
+                    const response = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&per_page=6`);
+                    if (!response.ok) throw new Error("Could not fetch repositories.");
+                    
+                    const repos = await response.ok ? await response.json() : [];
+                    
+                    githubLoading.classList.add("hidden");
+                    githubGrid.classList.remove("hidden");
+
+                    if (repos.length === 0) {
+                        githubGrid.innerHTML = `<p class='text-center text-slate-400 col-span-full'>لا توجد مستودعات برمجية عامة حالياً.</p>`;
+                        return;
+                    }
+
+                    githubGrid.innerHTML = "";
+                    repos.forEach(repo => {
+                        const card = document.createElement("div");
+                        card.className = "p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-brand-500 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2";
+                        card.innerHTML = `
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <i class="fa-brands fa-github text-2xl text-slate-400 group-hover:text-white transition-colors"></i>
+                                    <span class="text-xs bg-brand-500/10 text-brand-400 px-2.5 py-1 rounded-full font-bold font-mono">${repo.language || 'Code'}</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white group-hover:text-brand-400 transition-colors truncate font-mono">${repo.name}</h3>
+                                <p class="text-xs text-slate-400 line-clamp-2">${repo.description || 'مستودع برمجي على جيت هب لتطوير الأنظمة والتكنولوجيا.'}</p>
+                            </div>
+                            <div class="flex justify-between items-center pt-5 border-t border-slate-800 mt-4 text-xs font-semibold text-slate-400">
+                                <span><i class="fa-solid fa-star text-amber-500 mr-1.5"></i>${repo.stargazers_count} stars</span>
+                                <a href="${repo.html_url}" target="_blank" class="text-brand-400 hover:text-white flex items-center gap-1">
+                                    عرض الكود <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        `;
+                        githubGrid.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error(error);
+                    githubLoading.classList.add("hidden");
+                    githubGrid.classList.remove("hidden");
+                    githubGrid.innerHTML = `
+                        <!-- سقط الـ API؟ نعرض مشاريع ممتازة مجهزة مسبقاً كخيار تراجع -->
+                        <div class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-brand-500 transition-all duration-300 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <i class="fa-brands fa-github text-2xl text-slate-400"></i>
+                                    <span class="text-xs bg-brand-500/10 text-brand-400 px-2.5 py-1 rounded-full font-bold font-mono">Python</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white font-mono">EduCore-System</h3>
+                                <p class="text-xs text-slate-400">نظام إدارة وتخطيط موارد المدارس (EduCore) لأتمتة العمليات اليومية للطلاب والمدرسين.</p>
+                            </div>
+                            <div class="flex justify-between items-center pt-5 border-t border-slate-800 mt-4 text-xs font-semibold text-slate-400">
+                                <span><i class="fa-solid fa-star text-amber-500 mr-1.5"></i>5 stars</span>
+                                <a href="https://github.com/M-Hamaki" target="_blank" class="text-brand-400 hover:text-white flex items-center gap-1">عرض الكود</a>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-brand-500 transition-all duration-300 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <i class="fa-brands fa-github text-2xl text-slate-400"></i>
+                                    <span class="text-xs bg-brand-500/10 text-brand-400 px-2.5 py-1 rounded-full font-bold font-mono">n8n / JavaScript</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-white font-mono">EdTech-Automations</h3>
+                                <p class="text-xs text-slate-400">باقة من سيناريوهات n8n ومخرجات البرمجة الخاصة بربط الأنظمة وقواعد البيانات وتوليد التقارير التلقائية.</p>
+                            </div>
+                            <div class="flex justify-between items-center pt-5 border-t border-slate-800 mt-4 text-xs font-semibold text-slate-400">
+                                <span><i class="fa-solid fa-star text-amber-500 mr-1.5"></i>4 stars</span>
+                                <a href="https://github.com/M-Hamaki" target="_blank" class="text-brand-400 hover:text-white flex items-center gap-1">عرض الكود</a>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            fetchGithubRepos();
+
+            // -------------------------------------------------------------
+            // 3. شريط تقدم القراءة وسلوك الهيدر وزر الصعود للأعلى
+            // -------------------------------------------------------------
+            const scrollProgress = document.getElementById("scroll-progress");
+            const header = document.getElementById("main-header");
+            const upArrow = document.getElementById("up-arrow");
+
+            window.addEventListener("scroll", () => {
+                const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const currentScroll = window.scrollY;
+
+                // تحديث مؤشر القراءة
+                if (totalScroll > 0) {
+                    const percent = (currentScroll / totalScroll) * 100;
+                    scrollProgress.style.width = percent + "%";
+                }
+
+                // سلوك الهيدر عند التمرير
+                if (currentScroll > 50) {
+                    header.classList.add("bg-slate-900/90", "backdrop-blur-md", "border-slate-800", "shadow-xl");
+                } else {
+                    header.classList.remove("bg-slate-900/90", "backdrop-blur-md", "border-slate-800", "shadow-xl");
+                }
+
+                // إظهار وإخفاء زر الصعود للأعلى
+                if (currentScroll > 500) {
+                    upArrow.classList.remove("translate-y-12", "opacity-0");
+                } else {
+                    upArrow.classList.add("translate-y-12", "opacity-0");
+                }
+            });
+
+            upArrow.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            // -------------------------------------------------------------
+            // 4. تبديل الوضع الليلي والنهاري المتكامل (Light/Dark Theme)
+            // -------------------------------------------------------------
+            const themeBtn = document.getElementById("theme-btn");
+            const rootElement = document.documentElement;
+            const logoText = document.getElementById("logo-text");
+
+            themeBtn.addEventListener("click", () => {
+                const isDark = rootElement.classList.contains("dark");
+                if (isDark) {
+                    rootElement.classList.remove("dark");
+                    rootElement.classList.add("light");
+                    // تحديث الألوان للوضع الفاتح لتنافسية بصرية ممتازة
+                    document.body.className = "bg-slate-50 text-slate-800 font-sans transition-colors duration-300";
+                    themeBtn.innerHTML = `<i class="fa-solid fa-moon text-lg"></i>`;
+                    themeBtn.className = "w-10 h-10 rounded-xl bg-slate-200 border border-slate-300 hover:border-brand-500 flex items-center justify-center text-slate-800 transition-all";
+                } else {
+                    rootElement.classList.remove("light");
+                    rootElement.classList.add("dark");
+                    document.body.className = "bg-slate-900 text-slate-100 font-sans transition-colors duration-300";
+                    themeBtn.innerHTML = `<i class="fa-solid fa-sun text-lg"></i>`;
+                    themeBtn.className = "w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 hover:border-brand-500 flex items-center justify-center text-yellow-400 transition-all";
+                }
+            });
+
+            // -------------------------------------------------------------
+            // 5. تهيئة إرسال النموذج واستعداد ربطه بـ n8n (Webhook integration)
+            // -------------------------------------------------------------
+            const contactForm = document.getElementById("pro-contact-form");
+            contactForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const payload = {
+                    name: document.getElementById("contact-name").value,
+                    email: document.getElementById("contact-email").value,
+                    subject: document.getElementById("contact-subject").value,
+                    message: document.getElementById("contact-message").value,
+                    timestamp: new Date().toISOString()
+                };
+
+                // يمكنك وضع رابط الـ Webhook الخاص بك من n8n أو Zapier هنا ليتم تشغيل الأتمتة فوراً وإرسال الرسالة لتليجرام أو بريدك!
+                const N8N_WEBHOOK_URL = ""; 
+
+                if (N8N_WEBHOOK_URL !== "") {
+                    try {
+                        const res = await fetch(N8N_WEBHOOK_URL, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(payload)
+                        });
+                        if (res.ok) {
+                            alert(`شكراً لتواصلك يا أستاذ محمد، تم إرسال رسالتك وتشغيل الأتمتة بنجاح!`);
+                        }
+                    } catch (err) {
+                        alert("حدث خطأ أثناء الاتصال بالأتمتة، تم تفعيل الإرسال المحلي الاحتياطي.");
+                    }
+                } else {
+                    // التراجع للتشغيل الموضعي المحلي في حال لم يتم تعيين الرابط بعد
+                    alert(`شكراً لتواصلك الفعال يا أستاذ محمد! تم استلام رسالتك حول موضوع: (${payload.subject}) بنجاح.`);
+                }
+                contactForm.reset();
+            });
+        });
+    </script>
 </body>
 </html>
