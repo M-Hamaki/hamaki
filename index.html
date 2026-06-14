@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد حماقي | EdTech Expert & Software Engineer</title>
+    <title>محمد حماقي | EdTech Expert</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -152,7 +152,7 @@
                         <div><span class="text-slate-500">// Welcome to Hamaki's Interactive Terminal.</span></div>
                         <div><span class="text-slate-500">// Type <span class="text-yellow-400 font-bold">help</span> to see available commands.</span></div>
                         <div class="pt-2"><span class="text-blue-400">m_hamaki@portfolio:~$</span> <span class="text-slate-100">about</span></div>
-                        <div class="text-slate-300 leading-relaxed">EdTech Lead with 6+ years of experience modernization in digital infrastructure. Harvard CS50x alumni. Specializes in building custom School Management Systems and backend process automations.</div>
+                        <div class="text-slate-300 leading-relaxed">EdTech Lead with 8+ years of experience modernization in digital infrastructure. Harvard CS50x alumni. Specializes in building custom School Management Systems and backend process automations.</div>
                         
                         <!-- سطر الإدخال النشط -->
                         <div class="flex items-center gap-1.5 pt-2" id="input-line">
@@ -446,7 +446,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-2">
                             <label class="text-xs font-bold text-slate-500 dark:text-slate-400">الاسم</label>
-                            <input type="text" id="contact-name" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="اسمك الكريم">
+                            <input type="text" id="contact-name" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="your name">
                         </div>
                         <div class="space-y-2">
                             <label class="text-xs font-bold text-slate-500 dark:text-slate-400">البريد الإلكتروني</label>
@@ -475,10 +475,13 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- التذييل العصري (Footer) -->
+<!-- التذييل العصري (Footer) -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80 py-8 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center">
-            <p class="text-sm text-slate-500 dark:text-slate-400 font-sans">© 2026 | جميع الحقوق محفوظة <span class="text-brand-500 font-bold">محمد حماقي</span></p>
+            <!-- تم إضافة id="year" هنا -->
+            <p class="text-sm text-slate-500 dark:text-slate-400 font-sans">
+                &copy; <span id="year"></span> | جميع الحقوق محفوظة <span class="text-brand-500 font-bold">محمد حماقي</span>
+            </p>
             <div class="flex items-center gap-4 text-slate-400 text-lg">
                 <a href="https://github.com/M-Hamaki" target="_blank" class="hover:text-slate-600 dark:hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
                 <a href="https://linkedin.com/in/m-hamaki/" target="_blank" class="hover:text-slate-600 dark:hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
@@ -486,6 +489,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- سكريبت بسيط لتحديث العام تلقائياً -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
     <!-- منطق البرمجة المطور بالكامل (Advanced Scripting Block) -->
     <script>
@@ -500,7 +508,7 @@
 
             const commands = {
                 help: () => "Available Commands:<br><span class='text-yellow-400'>about</span>    - Brief intro of who I am<br><span class='text-yellow-400'>skills</span>   - List of my core technology stack<br><span class='text-yellow-400'>educore</span>  - Tech structure of my school management system<br><span class='text-yellow-400'>contact</span>  - My professional contact info<br><span class='text-yellow-400'>clear</span>    - Clears the terminal screen",
-                about: () => "Mohammed Hamaki:<br>EdTech Expert & Tech-Lead with 6+ years of experience leading Computer Science Depts. Fluent in Python, JS, C++ and automation architectures.",
+                about: () => "Mohammed Hamaki:<br>EdTech Expert & Tech-Lead with 8+ years of experience leading Computer Science Depts. Fluent in Python, JS, C++ and automation architectures.",
                 skills: () => "Core Tech Stack:<br>• Languages: Python, C++, JS, HTML/CSS, Bash<br>• Automation: n8n, API Integrations, Webhooks<br>• Infrastructure: Docker, Linux VPS Server Administrations, Cloud Databases",
                 educore: () => "EduCore Architecture:<br>A highly automated proprietary School Management System developed with Python & JS backend, powered with Docker containers, automated daily cron backup scripts, and n8n webhooks for notification and workflow pipelines.",
                 contact: () => "Direct Contact channels:<br>• Email: <a href='mailto:hamaki.gm@gmail.com' class='underline text-brand-400'>hamaki.gm@gmail.com</a><br>• Phone: +201001686363<br>• LinkedIn: linkedin.com/in/m-hamaki/",
