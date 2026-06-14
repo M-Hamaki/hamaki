@@ -7,11 +7,14 @@
     <!-- استدعاء خطوط جوجل لتنسيق احترافي -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- ربط ملف الـ CSS الحالي الخاص بك -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- ربط ملف الـ CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- شريط تقدم القراءة الاحترافي -->
+    <div id="progress-bar"></div>
 
     <!-- الشريط العلوي (Navbar) -->
     <header>
@@ -20,9 +23,11 @@
             <ul class="nav-links">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#about">نبذة عني</a></li>
-                <li><a href="#experience">الخبرات المهنية</a></li>
+                <li><a href="#experience">الخبرات</a></li>
                 <li><a href="#certificates">الشهادات</a></li>
                 <li><a href="#contact">تواصل معي</a></li>
+                <!-- زر تبديل الوضع الليلي -->
+                <li><button id="theme-toggle" aria-label="Toggle Theme">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -31,8 +36,28 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>محمد حماقي</h1>
-            <p>خبير تكنولوجيا التعليم (EdTech Expert) ومطور برمجيات وأتمتة، متميز في قيادة التحول الرقمي وتحديث البنية التحتية الرقمية للمؤسسات التعليمية.</p>
+            <!-- هنا سيظهر تأثير الكتابة الحركي عبر الجافا سكريبت -->
+            <p class="typing-text-container">أنا <span id="typing-text"></span></p>
+            <p class="hero-sub">خبير تكنولوجيا التعليم ومطور برمجيات وأتمتة، متميز في قيادة التحول الرقمي وتحديث البنية التحتية للمؤسسات التعليمية.</p>
             <a href="#experience" class="btn">استكشف مسيرتي المهنية</a>
+        </div>
+    </section>
+
+    <!-- قسم الإحصائيات والأرقام الحية (Counters Section) -->
+    <section id="counters" class="counters-section">
+        <div class="counters-grid">
+            <div class="counter-card">
+                <span class="counter-number" data-target="6">0</span><span class="counter-plus">+</span>
+                <p>سنوات خبرة</p>
+            </div>
+            <div class="counter-card">
+                <span class="counter-number" data-target="10">0</span><span class="counter-plus">+</span>
+                <p>شهادات اعتمادات</p>
+            </div>
+            <div class="counter-card">
+                <span class="counter-number" data-target="5">0</span><span class="counter-plus">+</span>
+                <p>أنظمة مخصصة مطورة</p>
+            </div>
         </div>
     </section>
 
@@ -42,7 +67,7 @@
         <div class="about-text">
             <p>أمتلك خبرة تمتد لأكثر من 6 سنوات في قيادة أقسام الحاسب الآلي وتطوير تكنولوجيا التعليم. أجمع بين الخلفية التربوية والمهارات البرمجية المتقدمة لرفع كفاءة المؤسسات ودفع عجلة التحول الرقمي، وتطوير الأنظمة الذكية مثل نظام إدارة المدارس المخصص.</p>
             
-            <h3 style="margin-top: 30px; color: #1e293b;">المهارات الأساسية</h3>
+            <h3 style="margin-top: 30px; color: var(--secondary-color);">المهارات الأساسية</h3>
             <div class="skills">
                 <span class="skill-badge">EdTech Leadership</span>
                 <span class="skill-badge">School Management Systems (EduCore)</span>
@@ -60,24 +85,21 @@
     <section id="experience" class="projects">
         <h2>الخبرات المهنية</h2>
         <div class="projects-grid">
-            <!-- الوظيفة الحالية -->
             <div class="project-card">
                 <h3>رئيس قسم الحاسب الآلي / قائد تكنولوجيا التعليم</h3>
-                <h4 style="color: #2563eb; margin-bottom: 10px;">مدارس دلتا الحديثة للغات | 2020 - حتى الآن</h4>
+                <h4 class="card-subtitle">مدارس دلتا الحديثة للغات | 2020 - حتى الآن</h4>
                 <p>تطوير نظام مخصص لإدارة المدارس (EduCore) لتسهيل العمليات الإدارية والأكاديمية، قيادة وتوجيه فريق عمل عالي الأداء، وتطوير البنية التحتية التكنولوجية للمدرسة وحل المشكلات التقنية المعقدة.</p>
                 <span class="tech-tag">HOD & EdTech Lead</span>
             </div>
-            <!-- وظيفة سابقة 1 -->
             <div class="project-card">
                 <h3>معلم حاسب آلي</h3>
-                <h4 style="color: #2563eb; margin-bottom: 10px;">مدارس دلتا الحديثة للغات | 2019 - 2020</h4>
+                <h4 class="card-subtitle">مدارس دلتا الحديثة للغات | 2019 - 2020</h4>
                 <p>شرح الدروس باستخدام استراتيجيات تعليمية حديثة، وتقديم مشاريع عملية تساعد الطلاب على تطبيق ما تعلموه، وإعداد الخطط والمناهج التعليمية المبتكرة.</p>
                 <span class="tech-tag">Computer Teacher</span>
             </div>
-            <!-- وظيفة سابقة 2 -->
             <div class="project-card">
                 <h3>مشرف مركز الاتصال</h3>
-                <h4 style="color: #2563eb; margin-bottom: 10px;">صيدليات العبد اللطيف الطرشوبي | 2018 - 2019</h4>
+                <h4 class="card-subtitle">صيدليات العبد اللطيف الطرشوبي | 2018 - 2019</h4>
                 <p>إدارة وتوجيه فريق خدمة العملاء ومركز الاتصال لضمان جودة الخدمة ورفع كفاءة التواصل الاستراتيجي.</p>
                 <span class="tech-tag">Call Center Supervisor</span>
             </div>
@@ -85,23 +107,20 @@
     </section>
 
     <!-- قسم التعليم والشهادات (Certificates Section) -->
-    <section id="certificates" class="projects" style="background-color: #ffffff; border-radius: 15px; padding: 60px 40px; margin-top: 40px;">
+    <section id="certificates" class="projects-section-white">
         <h2>التعليم والشهادات الاحترافية</h2>
         <div class="projects-grid" style="margin-top: 30px;">
-            <!-- التعليم -->
-            <div class="project-card" style="border-top-color: #38bdf8;">
+            <div class="project-card border-accent">
                 <h3>المؤهلات الأكاديمية</h3>
                 <p>• دبلوم عام في التربية تخصص حاسب آلي - جامعة الأزهر (2025).<br>• بكالوريوس تجارة - جامعة المنصورة (2017).</p>
                 <span class="tech-tag">Education</span>
             </div>
-            <!-- شهادات البرمجة -->
-            <div class="project-card" style="border-top-color: #38bdf8;">
+            <div class="project-card border-accent">
                 <h3>البرمجة وعلوم الحاسب</h3>
                 <p>• شهادة CS50x من جامعة هارفارد (2026).<br>• تطوير الويب (JavaScript / HTML & CSS) من معهد تكنولوجيا المعلومات ITI.<br>• لغة Python (المستوى المتوسط) من وزارة الاتصالات.<br>• أسس البرمجة وحل المشكلات ولغة C++ من Programming Advices.</p>
                 <span class="tech-tag">Programming</span>
             </div>
-            <!-- شهادات تكنولوجية وتربوية -->
-            <div class="project-card" style="border-top-color: #38bdf8;">
+            <div class="project-card border-accent">
                 <h3>الشهادات التقنية والتربوية</h3>
                 <p>• شهادة Microsoft Office Specialist Master من CertiPort.<br>• دورة التدريس عبر الإنترنت من Amideast.<br>• دبلومة المحاسب الشامل والإلكتروني المعتمد.</p>
                 <span class="tech-tag">Certificates</span>
@@ -114,25 +133,30 @@
         <h2>تواصل معي</h2>
         <p>يسعدني دائماً تواصلك المهني وتبادل الخبرات حول تكنولوجيا التعليم والبرمجة.</p>
         
-        <div style="margin-bottom: 30px; font-size: 1.1rem; color: #1e293b;">
+        <div class="contact-info-block">
             <p>📍 طلخا، المنصورة، الدقهلية، مصر</p>
             <p>📧 hamaki.gm@gmail.com</p>
-            <p>🔗 <a href="https://linkedin.com/in/m-hamaki/" target="_blank" style="color: #2563eb; text-decoration: none;">linkedin.com/in/m-hamaki/</a></p>
-            <p>🌐 <a href="https://facebook.com/hamaki.fb" target="_blank" style="color: #2563eb; text-decoration: none;">facebook.com/hamaki.fb</a></p>
+            <p>🔗 <a href="https://linkedin.com/in/m-hamaki/" target="_blank">linkedin.com/in/m-hamaki/</a></p>
+            <p>🌐 <a href="https://facebook.com/hamaki.fb" target="_blank">facebook.com/hamaki.fb</a></p>
         </div>
 
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('تم استلام رسالتك بنجاح، شكراً لتواصلك يا أستاذ محمد!');">
-            <input type="text" placeholder="الاسم" required>
-            <input type="email" placeholder="البريد الإلكتروني" required>
-            <textarea placeholder="نص رسالتك هنا..." rows="5" required></textarea>
+        <form class="contact-form" id="main-contact-form">
+            <input type="text" placeholder="الاسم" required id="form-name">
+            <input type="email" placeholder="البريد الإلكتروني" required id="form-email">
+            <textarea placeholder="نص رسالتك هنا..." rows="5" required id="form-message"></textarea>
             <button type="submit" class="btn">إرسال الرسالة</button>
         </form>
     </section>
+
+    <!-- زر العودة إلى الأعلى -->
+    <button id="scroll-to-top" aria-label="Go to top">↑</button>
 
     <!-- التذييل (Footer) -->
     <footer>
         <p>جميع الحقوق محفوظة © 2026 | تم تطوير الموقع بواسطة محمد حماقي</p>
     </footer>
 
+    <!-- ربط ملف الـ JavaScript في نهاية الصفحة لضمان السرعة -->
+    <script src="script.js"></script>
 </body>
 </html>
