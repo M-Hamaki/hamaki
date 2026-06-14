@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد حماقي | EdTech Expert</title>
+    <title>محمد حماقي | EdTech Expert & Software Engineer</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -78,6 +78,7 @@
                 <span class="text-xl font-extrabold tracking-wide text-slate-900 dark:text-white">Hamaki<span class="text-brand-500">.EdTech</span></span>
             </div>
             
+            <!-- روابط التنقل للشاشات الكبيرة -->
             <ul class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
                 <li><a href="#home" class="hover:text-brand-500 transition-colors">الرئيسية</a></li>
                 <li><a href="#terminal" class="hover:text-brand-500 transition-colors">الطرفية التفاعلية</a></li>
@@ -88,17 +89,47 @@
                 <li><a href="#contact" class="hover:text-brand-500 transition-colors">تواصل</a></li>
             </ul>
 
-            <div class="flex items-center gap-4">
-                <button id="theme-btn" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-500 flex items-center justify-center text-amber-500 dark:text-yellow-400 transition-all shadow-sm">
-                    <i class="fa-solid fa-sun text-lg dark:hidden"></i>
-                    <i class="fa-solid fa-moon text-lg hidden dark:block"></i>
+            <div class="flex items-center gap-3">
+                <!-- زر تبديل النمط الليلي/النهاري مع تصحيح اتساق الأيقونات لتجربة بديهية -->
+                <button id="theme-btn" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-500 flex items-center justify-center transition-all shadow-sm">
+                    <i class="fa-solid fa-moon text-lg text-slate-700 dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-lg text-yellow-400 hidden dark:block"></i>
                 </button>
+
+                <!-- زر الهمبرجر المخصص للهواتف المحمولة -->
+                <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-brand-500 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-all shadow-sm">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+
                 <a href="#contact" class="hidden sm:inline-flex bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-brand-500/20 hover:scale-105 transition-all">
-                    تواصل
+                    تواصل معي
                 </a>
             </div>
         </nav>
     </header>
+
+    <!-- قائمة التنقل المخصصة للهواتف الذكية (Mobile Responsive Slide-over Drawer) -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm translate-x-full transition-transform duration-300 md:hidden">
+        <div class="absolute top-0 right-0 w-72 h-full bg-white dark:bg-slate-900 p-6 shadow-2xl border-l border-slate-200 dark:border-slate-800 flex flex-col gap-6">
+            <div class="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800">
+                <span class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="text-brand-500"><i class="fa-solid fa-compass"></i></span> تصفح الموقع
+                </span>
+                <button id="close-menu-btn" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <ul class="flex flex-col gap-3 text-right">
+                <li><a href="#home" class="mobile-link block p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-brand-500 font-bold transition-all text-slate-700 dark:text-slate-300">الرئيسية</a></li>
+                <li><a href="#terminal" class="mobile-link block p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-brand-500 font-bold transition-all text-slate-700 dark:text-slate-300">الطرفية التفاعلية</a></li>
+                <li><a href="#about" class="mobile-link block p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-brand-500 font-bold transition-all text-slate-700 dark:text-slate-300">نبذة شخصية</a></li>
+                <li><a href="#educore" class="mobile-link block p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-brand-500 font-bold transition-all text-slate-700 dark:text-slate-300">منظومة EduCore</a></li>
+                <li><a href="#experience" class="mobile-link block p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-brand-500 font-bold transition-all text-slate-700 dark:text-slate-300">المسيرة المهنية</a></li>
+                <li><a href="#github-section" class="mobile-link block p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-brand-500 font-bold transition-all text-slate-700 dark:text-slate-300">المشاريع الحية</a></li>
+                <li><a href="#contact" class="mobile-link block p-3 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold text-center mt-4">تواصل معي</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- القسم الرئيسي العصري (Hero Section) -->
     <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-slate-50 dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
@@ -136,7 +167,7 @@
 
             <!-- محاكي الطرفية التفاعلي (Interactive OS Terminal) -->
             <div class="lg:col-span-5 w-full" id="terminal">
-                <div class="w-full rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50 bg-slate-950/90 text-emerald-400">
+                <div class="w-full rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50 bg-slate-950/90 text-emerald-400 cursor-pointer">
                     <!-- ترويسة الطرفية -->
                     <div class="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-800">
                         <div class="flex items-center gap-2">
@@ -157,7 +188,7 @@
                         <!-- سطر الإدخال النشط -->
                         <div class="flex items-center gap-1.5 pt-2" id="input-line">
                             <span class="text-blue-400">m_hamaki@portfolio:~$</span>
-                            <input type="text" id="terminal-input" class="bg-transparent text-slate-100 border-none outline-none flex-1 font-mono focus:ring-0 p-0" autofocus autocomplete="off" placeholder="...">
+                            <input type="text" id="terminal-input" class="bg-transparent text-slate-100 border-none outline-none flex-1 font-mono focus:ring-0 p-0 text-sm sm:text-base" autofocus autocomplete="off" placeholder="...">
                         </div>
                     </div>
                 </div>
@@ -205,11 +236,11 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- إدراج الصورة الشخصية الرسمية (Image 1) -->
+            <!-- إدراج الصورة الشخصية الرسمية الحقيقية -->
             <div class="lg:col-span-5 relative group">
                 <div class="absolute -inset-1 bg-gradient-to-tr from-brand-600 to-cyan-400 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                 <div class="relative rounded-2xl overflow-hidden border-2 border-slate-200/50 dark:border-slate-700/50 bg-slate-100 dark:bg-slate-800 shadow-2xl">
-                    <img src="2.jpeg" alt="محمد حماقي - خبير تكنولوجيا التعليم" class="w-full h-auto object-cover max-h-[500px] scale-100 group-hover:scale-105 transition duration-500">
+                    <img src="WhatsApp Image 2026-06dfdfdf-14 at 8.31.46 PM.jpeg" alt="محمد حماقي - خبير تكنولوجيا التعليم" class="w-full h-auto object-cover max-h-[500px] scale-100 group-hover:scale-105 transition duration-500">
                 </div>
             </div>
 
@@ -277,7 +308,7 @@
         </div>
     </section>
 
-    <!-- قسم فلسفة العمل ونظام EduCore الذكي (EduCore & Tech Action Section) - (Image 2) -->
+    <!-- قسم فلسفة العمل ونظام EduCore الذكي (EduCore & Tech Action Section) -->
     <section id="educore" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-200 dark:border-slate-800">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -308,11 +339,11 @@
                 </ul>
             </div>
 
-            <!-- إدراج صورة العمل الميداني والشرح (Image 2) -->
+            <!-- إدراج صورة العمل الميداني والشرح الحقيقية المرفوعة من قبلك -->
             <div class="lg:col-span-5 relative group">
                 <div class="absolute -inset-1 bg-gradient-to-tr from-cyan-500 to-emerald-400 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                 <div class="relative rounded-2xl overflow-hidden border-2 border-slate-200/50 dark:border-slate-700/50 bg-slate-100 dark:bg-slate-800 shadow-2xl">
-                    <img src="1.png" alt="محمد حماقي يشرح البنية البرمجية" class="w-full h-auto object-cover max-h-[500px] scale-100 group-hover:scale-105 transition duration-500">
+                    <img src="1758069814237.jpg" alt="محمد حماقي يشرح البنية البرمجية" class="w-full h-auto object-cover max-h-[500px] scale-100 group-hover:scale-105 transition duration-500">
                 </div>
             </div>
 
@@ -378,7 +409,7 @@
         </div>
     </section>
 
-    <!-- قسم جيت هب الحي (Dynamic GitHub Projects) -->
+    <!-- قسم جيت هب الحي والمشاريع في الخدمة (Dynamic GitHub & Production Projects) -->
     <section id="github-section" class="max-w-7xl mx-auto px-6 py-20 space-y-16">
         <div class="text-center space-y-4">
             <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">المشاريع الحية ومستودعات الأكواد</h2>
@@ -526,20 +557,20 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-2">
                             <label class="text-xs font-bold text-slate-500 dark:text-slate-400">الاسم</label>
-                            <input type="text" id="contact-name" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="your name">
+                            <input type="text" id="contact-name" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="Your Name">
                         </div>
                         <div class="space-y-2">
                             <label class="text-xs font-bold text-slate-500 dark:text-slate-400">البريد الإلكتروني</label>
-                            <input type="email" id="contact-email" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="your@email.com">
+                            <input type="email" id="contact-email" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="yourname@gmail.com">
                         </div>
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 dark:text-slate-400">عنوان الرسالة أو موضوع الاتصال</label>
-                        <input type="text" id="contact-subject" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="مشروع أتمتة جديد / استشارة برمجية">
+                        <input type="text" id="contact-subject" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="مثال: استشارة تقنية / تطوير نظام أتمتة">
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-slate-500 dark:text-slate-400">تفاصيل رسالتك</label>
-                        <textarea id="contact-message" required rows="5" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="تفاصيل ما تحتاج إليه برمجياً أو تربوياً..."></textarea>
+                        <textarea id="contact-message" required rows="5" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/70 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-brand-500 font-sans shadow-sm" placeholder="اكتب هنا تفاصيل مشروعك أو استشارتك التقنية بالتفصيل..."></textarea>
                     </div>
                     <button type="submit" class="w-full bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 py-3.5 rounded-xl text-white font-bold text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
                         <i class="fa-solid fa-paper-plane"></i>
@@ -555,10 +586,9 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-<!-- التذييل العصري (Footer) -->
+    <!-- التذييل العصري (Footer) -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80 py-8 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center">
-            <!-- تم إضافة id="year" هنا -->
             <p class="text-sm text-slate-500 dark:text-slate-400 font-sans">
                 &copy; <span id="year"></span> | جميع الحقوق محفوظة <span class="text-brand-500 font-bold">محمد حماقي</span>
             </p>
@@ -570,6 +600,9 @@
         </div>
     </footer>
 
+    <!-- حاوية الإشعارات المخصصة الأنيقة (Custom Glassmorphic Toasts Container) بدلاً من alerts المزعجة -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
     <!-- سكريبت بسيط لتحديث العام تلقائياً -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -580,11 +613,68 @@
         document.addEventListener("DOMContentLoaded", () => {
             
             // -------------------------------------------------------------
-            // 1. محاكي الطرفية التفاعلي المطور (Command Line Simulator)
+            // 1. نظام الإشعارات المنبثقة المخصص (Custom Toast System Helper)
+            // -------------------------------------------------------------
+            const showToast = (message, type = 'success') => {
+                const container = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                toast.className = `transform translate-y-5 opacity-0 transition-all duration-300 pointer-events-auto flex items-center gap-3 px-5 py-4 rounded-xl shadow-xl font-bold text-sm ${
+                    type === 'success' 
+                    ? 'bg-emerald-500 text-white shadow-emerald-500/20' 
+                    : 'bg-rose-500 text-white shadow-rose-500/20'
+                }`;
+                
+                const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+                toast.innerHTML = `<i class="fa-solid ${icon} text-lg"></i><span>${message}</span>`;
+                
+                container.appendChild(toast);
+                
+                // تشغيل الأنميشن للإظهار
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-5', 'opacity-0');
+                }, 50);
+                
+                // إخفاء وحذف الإشعار بعد 4 ثوانٍ تلقائياً
+                setTimeout(() => {
+                    toast.classList.add('translate-y-5', 'opacity-0');
+                    setTimeout(() => toast.remove(), 300);
+                }, 4000);
+            };
+
+            // -------------------------------------------------------------
+            // 2. التحكم في قائمة التنقل للهواتف المحمولة (Mobile Drawer Toggle)
+            // -------------------------------------------------------------
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+            const closeMenuBtn = document.getElementById("close-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileLinks = document.querySelectorAll(".mobile-link");
+
+            const toggleMobileMenu = () => {
+                mobileMenu.classList.toggle("translate-x-full");
+            };
+
+            if (mobileMenuBtn && closeMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+                closeMenuBtn.addEventListener("click", toggleMobileMenu);
+                mobileLinks.forEach(link => {
+                    link.addEventListener("click", toggleMobileMenu);
+                });
+            }
+
+            // -------------------------------------------------------------
+            // 3. محاكي الطرفية التفاعلي المطور (Command Line Simulator)
             // -------------------------------------------------------------
             const terminalInput = document.getElementById("terminal-input");
             const terminalBody = document.getElementById("terminal-body");
             const inputLine = document.getElementById("input-line");
+            const terminalWidget = document.getElementById("terminal");
+
+            // التركيز التلقائي على حقل الإدخال بمجرد النقر داخل نطاق التيرمينال لزيادة الاحترافية
+            if (terminalWidget && terminalInput) {
+                terminalWidget.addEventListener("click", () => {
+                    terminalInput.focus();
+                });
+            }
 
             const commands = {
                 help: () => "Available Commands:<br><span class='text-yellow-400'>about</span>    - Brief intro of who I am<br><span class='text-yellow-400'>skills</span>   - List of my core technology stack<br><span class='text-yellow-400'>educore</span>  - Tech structure of my school management system<br><span class='text-yellow-400'>contact</span>  - My professional contact info<br><span class='text-yellow-400'>clear</span>    - Clears the terminal screen",
@@ -599,41 +689,43 @@
                 }
             };
 
-            terminalInput.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    const inputVal = terminalInput.value.trim().toLowerCase();
-                    terminalInput.value = "";
+            if (terminalInput) {
+                terminalInput.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                        const inputVal = terminalInput.value.trim().toLowerCase();
+                        terminalInput.value = "";
 
-                    // طباعة السطر المدخل أولاً
-                    const line = document.createElement("div");
-                    line.className = "pt-2";
-                    line.innerHTML = `<span class="text-blue-400">m_hamaki@portfolio:~$</span> <span class="text-slate-100">${inputVal}</span>`;
-                    terminalBody.insertBefore(line, inputLine);
+                        // طباعة السطر المدخل أولاً
+                        const line = document.createElement("div");
+                        line.className = "pt-2";
+                        line.innerHTML = `<span class="text-blue-400">m_hamaki@portfolio:~$</span> <span class="text-slate-100">${inputVal}</span>`;
+                        terminalBody.insertBefore(line, inputLine);
 
-                    if (inputVal === "") return;
+                        if (inputVal === "") return;
 
-                    // معالجة الأمر وطباعة الإخراج
-                    const output = document.createElement("div");
-                    output.className = "text-slate-300 leading-relaxed";
+                        // معالجة الأمر وطباعة الإخراج
+                        const output = document.createElement("div");
+                        output.className = "text-slate-300 leading-relaxed";
 
-                    if (commands[inputVal]) {
-                        const res = commands[inputVal]();
-                        if (inputVal !== "clear") {
-                            output.innerHTML = res;
+                        if (commands[inputVal]) {
+                            const res = commands[inputVal]();
+                            if (inputVal !== "clear") {
+                                output.innerHTML = res;
+                                terminalBody.insertBefore(output, inputLine);
+                            }
+                        } else {
+                            output.innerHTML = `<span class="text-rose-500">bash: command not found: ${inputVal}</span>. Type <span class="text-yellow-400">help</span> for guide.`;
                             terminalBody.insertBefore(output, inputLine);
                         }
-                    } else {
-                        output.innerHTML = `<span class="text-rose-500">bash: command not found: ${inputVal}</span>. Type <span class="text-yellow-400">help</span> for guide.`;
-                        terminalBody.insertBefore(output, inputLine);
-                    }
 
-                    // التمرير التلقائي لأسفل الطرفية
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
-                }
-            });
+                        // التمرير التلقائي لأسفل الطرفية
+                        terminalBody.scrollTop = terminalBody.scrollHeight;
+                    }
+                });
+            }
 
             // -------------------------------------------------------------
-            // 2. دالة العداد الحركي الذكي (Fixed Live Counter Engine)
+            // 4. دالة العداد الحركي الذكي (Fixed Live Counter Engine)
             // -------------------------------------------------------------
             const animateCounters = () => {
                 const counters = document.querySelectorAll('.stat-number');
@@ -674,7 +766,7 @@
             }
 
             // -------------------------------------------------------------
-            // 3. الربط الفعلي مع GitHub API (Dynamic Repo Fetching)
+            // 5. الربط الفعلي مع GitHub API (Dynamic Repo Fetching)
             // -------------------------------------------------------------
             const githubLoading = document.getElementById("github-loading");
             const githubGrid = document.getElementById("github-repos-grid");
@@ -758,7 +850,7 @@
             fetchGithubRepos();
 
             // -------------------------------------------------------------
-            // 4. شريط تقدم القراءة وسلوك الهيدر وزر الصعود للأعلى
+            // 6. شريط تقدم القراءة وسلوك الهيدر وزر الصعود للأعلى
             // -------------------------------------------------------------
             const scrollProgress = document.getElementById("scroll-progress");
             const header = document.getElementById("main-header");
@@ -791,7 +883,7 @@
             });
 
             // -------------------------------------------------------------
-            // 5. تبديل وضع الأنماط المتوافق بالكامل (Perfect Theme Toggle Switch)
+            // 7. تبديل وضع الأنماط المتوافق بالكامل (Perfect Theme Toggle Switch)
             // -------------------------------------------------------------
             const themeBtn = document.getElementById("theme-btn");
             const htmlNode = document.documentElement;
@@ -815,7 +907,7 @@
             }
 
             // -------------------------------------------------------------
-            // 6. تهيئة إرسال النموذج واستعداد ربطه بـ n8n (Webhook integration)
+            // 8. تهيئة إرسال النموذج واستعداد ربطه بـ n8n (Webhook integration)
             // -------------------------------------------------------------
             const contactForm = document.getElementById("pro-contact-form");
             contactForm.addEventListener("submit", async (e) => {
@@ -839,13 +931,13 @@
                             body: JSON.stringify(payload)
                         });
                         if (res.ok) {
-                            alert(`شكراً لتواصلك يا أستاذ محمد، تم إرسال رسالتك وتشغيل الأتمتة بنجاح!`);
+                            showToast(`شكراً لتواصلك يا أستاذ محمد، تم إرسال رسالتك وتشغيل الأتمتة بنجاح!`, 'success');
                         }
                     } catch (err) {
-                        alert("حدث خطأ أثناء الاتصال بالأتمتة، تم تفعيل الإرسال المحلي الاحتياطي.");
+                        showToast("حدث خطأ أثناء الاتصال بالأتمتة، تم تفعيل الإرسال المحلي الاحتياطي.", 'error');
                     }
                 } else {
-                    alert(`شكراً لتواصلك الفعال يا أستاذ محمد! تم استلام رسالتك حول موضوع: (${payload.subject}) بنجاح.`);
+                    showToast(`شكراً لتواصلك الفعال يا أستاذ محمد! تم استلام رسالتك حول موضوع: (${payload.subject}) بنجاح.`, 'success');
                 }
                 contactForm.reset();
             });
