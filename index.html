@@ -172,7 +172,7 @@
             <!-- عداد سنوات الخبرة -->
             <div class="space-y-2 p-4 order-3 sm:order-1">
                 <div class="text-4xl sm:text-5xl font-extrabold text-brand-600 dark:text-brand-500 font-mono flex justify-center items-center">
-                    <span class="stat-number" data-target="6">0</span><span>+</span>
+                    <span class="stat-number" data-target="8">0</span><span>+</span>
                 </div>
                 <div class="text-slate-600 dark:text-slate-400 text-sm font-semibold">سنوات خبرة في قيادة أقسام الحاسب</div>
             </div>
@@ -379,12 +379,92 @@
     </section>
 
     <!-- قسم جيت هب الحي (Dynamic GitHub Projects) -->
-    <section id="github-section" class="max-w-7xl mx-auto px-6 py-20 space-y-12">
+    <section id="github-section" class="max-w-7xl mx-auto px-6 py-20 space-y-16">
         <div class="text-center space-y-4">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">مستودعات برمجية حية من GitHub</h2>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">المشاريع الحية ومستودعات الأكواد</h2>
             <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
-            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">يتم سحب هذه المشاريع حياً ومباشراً من حسابي الشخصي على جيت هب باستخدام الـ API.</p>
+            <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">استعراض للمنصات الرقمية التي قمت ببنائها وإدارتها تقنياً، إلى جانب الأكواد المفتوحة على حسابي الشخصي.</p>
         </div>
+
+        <!-- منصات حية مميزة في الخدمة الحقيقية -->
+        <div class="space-y-8 border-b border-slate-200 dark:border-slate-800 pb-12">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <span class="flex h-3 w-3 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                المنصات والأنظمة الحية في الخدمة (Production Systems)
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- موقع بوابة مدارس دلتا الحديثة للغات -->
+                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-brand-500 dark:hover:border-brand-500 shadow-lg transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-br-xl uppercase tracking-wider animate-pulse">Live</div>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-600 dark:text-brand-400 text-2xl shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-800 dark:text-white group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">بوابة خدمات الطلاب والمعلمين (Portal)</h4>
+                                <span class="text-xs text-slate-400 dark:text-slate-500 font-mono">portal.dmls.edu.eg</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2">
+                            بوابة الخدمات الأكاديمية والتربوية الموحدة لمدارس دلتا الحديثة. تمثل البوابة واجهة النظام البرمجي <strong class="text-brand-600 dark:text-brand-400">EduCore</strong> الذكي الذي يخدم آلاف الطلاب وأولياء الأمور والكادر التعليمي، مع توفير لوحات تحكم متكاملة لإصدار التقارير ومتابعة الحضور والدرجات آلياً.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2.5 py-1 bg-brand-500/10 text-brand-600 dark:text-brand-400 text-[10px] font-bold rounded-lg font-mono">EduCore System</span>
+                            <span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-[10px] font-bold rounded-lg font-mono">Python/JS</span>
+                            <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-lg font-mono">Linux VPS</span>
+                            <span class="px-2.5 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded-lg font-mono">SSL Secure</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-5 border-t border-slate-200 dark:border-slate-800 mt-6">
+                        <span class="text-xs text-slate-400 dark:text-slate-500 font-medium">تطوير وتأسيس وإدارة كاملة</span>
+                        <a href="https://portal.dmls.edu.eg" target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shadow-brand-500/20 hover:scale-105 transition-all">
+                            زيارة المنصة <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- موقع مدارس دلتا الرئيسي -->
+                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 hover:border-brand-500 dark:hover:border-brand-500 shadow-lg transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 bg-cyan-500 text-white text-[10px] font-bold px-3 py-1 rounded-br-xl uppercase tracking-wider">Live</div>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-2xl shrink-0">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-800 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">الموقع الرسمي لمدارس دلتا الحديثة للغات</h4>
+                                <span class="text-xs text-slate-400 dark:text-slate-500 font-mono">dmls.edu.eg</span>
+                            </div>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2">
+                            البوابة التعريفية والإعلامية الرسمية للمؤسسة. تم تصميمها وإدارتها وتأمينها تقنياً لتقديم معلومات المناهج وقبول التسجيل الجديد وربطه بأتمتة ذكية تسهل مراجعة طلبات أولياء الأمور الجدد وحجز المقابلات بسلاسة.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-[10px] font-bold rounded-lg font-mono">Web Platform</span>
+                            <span class="px-2.5 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-lg font-mono">SEO Optimization</span>
+                            <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-lg font-mono">Cloud Hosting</span>
+                            <span class="px-2.5 py-1 bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold rounded-lg font-mono">Domain & DNS</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-5 border-t border-slate-200 dark:border-slate-800 mt-6">
+                        <span class="text-xs text-slate-400 dark:text-slate-500 font-medium">إشراف وتطوير وإدارة تقنية</span>
+                        <a href="https://dmls.edu.eg" target="_blank" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shadow-cyan-500/20 hover:scale-105 transition-all">
+                            زيارة الموقع <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 pt-4">
+            <i class="fa-brands fa-github text-2xl text-slate-400 dark:text-slate-500"></i>
+            المستودعات والمشاريع البرمجية المفتوحة المصدر
+        </h3>
 
         <!-- حاوية تحميل جيت هب الدوارة -->
         <div id="github-loading" class="text-center py-12 space-y-4">
